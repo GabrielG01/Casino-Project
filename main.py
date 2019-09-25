@@ -8,6 +8,8 @@
 
 # dealer deals another card. If the total is 17 or more, it must stand. If the total is 16 or under, then add cards until its 17 or more
 
+# If player is closer to 21 than dealer, they win. IF player gets exactly 21, it's a blackjack!
+
 
 import random
 
@@ -21,12 +23,27 @@ def blackjack():
         print('Thanks for stopping by! Come Again!')
         return
 
+    def hitOrStand():
+        print('\nWould you like to hit or stand? (Hit / Stand)')
+        userInputhit = input('').upper()
+        if userInputhit == 'HIT':
+            # TODO
+            print('You hit!')
+        elif userInputhit == 'STAND':
+            # TODO
+            print('You stand.')
+        else:
+            print('Sorry? Come again')
+            hitOrStand()
+            
     def mainGame(deck, cash):
         playerCardOne = random.choice(deck)
         playerCardTwo = random.choice(deck)
-
-        print("Here are your cards sir and/or ma'am!\n")
+        dealerCardOne = random.choice(deck)
+        print("\nHere are your cards sir and/or ma'am!\n")
         print(f'You are handed a(n) {playerCardOne} and a(n) {playerCardTwo}.')
+        print(f'The dealer places in front of them a(n){dealerCardOne}')
+        hitOrStand()
         
 
     if userInput == 'Y':

@@ -18,7 +18,7 @@ def blackjack():
     deck = [1,2,3,4,5,6,7,8,9,10,11]
     playerCardOne = random.choice(deck)
     playerCardTwo = random.choice(deck)
-    
+    current_Num = []
     total_balance = 200
     print(f'\nWelcome to the blackjack table!\nYour current balance is ${total_balance}, would you like to play? (Y / N) ')
     userInput = input('').upper()
@@ -31,8 +31,10 @@ def blackjack():
         newplayerCard = random.choice(deck)
         if newplayerCard + (playerCardOne + playerCardTwo) < 21 :
             
-            print(f'You pulled a(n) {newPlayerCard}')
+            print(f'You pulled a(n) {newplayerCard}')
             hitOrStand()
+        else:
+            print(f'Ohh, sorry! You pulled {newplayerCard} That is a loss!');
         
 
     def hitOrStand():
@@ -40,7 +42,7 @@ def blackjack():
         userInputhit = input('').upper()
         if userInputhit == 'HIT':
             hit();
-            print('You hit!')
+            
         elif userInputhit == 'STAND':
             # TODO
             print('You stand.')
@@ -59,9 +61,12 @@ def blackjack():
 
     if userInput == 'Y':
         mainGame()
-        
-    else:
+    elif userInput =='N':
         endCard()
+    else:
+        print("Wow, didn't realize you were a jokester. SECURITY!\nSecurity escorts you off the premises while onlookers gawk.\nYou're humiliated.")
+        
+        return
         
 
 blackjack()

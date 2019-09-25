@@ -11,8 +11,12 @@ def blackjack():
         return
 
     def mainGame(deck, cash):
+        playerCardOne = random.choice(deck)
+        playerCardTwo = random.choice(deck)
+
         print("Here are your cards sir and/or ma'am!\n")
-        print(f'You are handed a {random.choice(card_list)} and a {random.choice(card_list)}.')
+        print(f'You are handed a(n) {playerCardOne} and a(n) {playerCardTwo}.')
+        
 
     if userInput == 'Y':
         mainGame(card_list,total_balance)

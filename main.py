@@ -14,7 +14,11 @@
 import random
 
 def blackjack():
-    card_list = [1,2,3,4,5,6,7,8,9,10,11]
+    
+    deck = [1,2,3,4,5,6,7,8,9,10,11]
+    playerCardOne = random.choice(deck)
+    playerCardTwo = random.choice(deck)
+    
     total_balance = 200
     print(f'\nWelcome to the blackjack table!\nYour current balance is ${total_balance}, would you like to play? (Y / N) ')
     userInput = input('').upper()
@@ -23,11 +27,19 @@ def blackjack():
         print('Thanks for stopping by! Come Again!')
         return
 
+    def hit():   
+        newplayerCard = random.choice(deck)
+        if newplayerCard + (playerCardOne + playerCardTwo) < 21 :
+            
+            print(f'You pulled a(n) {newPlayerCard}')
+            hitOrStand()
+        
+
     def hitOrStand():
         print('\nWould you like to hit or stand? (Hit / Stand)')
         userInputhit = input('').upper()
         if userInputhit == 'HIT':
-            # TODO
+            hit();
             print('You hit!')
         elif userInputhit == 'STAND':
             # TODO
@@ -36,9 +48,8 @@ def blackjack():
             print('Sorry? Come again')
             hitOrStand()
             
-    def mainGame(deck, cash):
-        playerCardOne = random.choice(deck)
-        playerCardTwo = random.choice(deck)
+    def mainGame():
+      
         dealerCardOne = random.choice(deck)
         print("\nHere are your cards sir and/or ma'am!\n")
         print(f'You are handed a(n) {playerCardOne} and a(n) {playerCardTwo}.')
@@ -47,7 +58,7 @@ def blackjack():
         
 
     if userInput == 'Y':
-        mainGame(card_list,total_balance)
+        mainGame()
         
     else:
         endCard()
